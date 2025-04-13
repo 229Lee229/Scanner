@@ -1,0 +1,4 @@
+此程序用于调试通过STM32发送指令continuous, manual 和readdeviceid给scanner,若成功接收,再发送回STM32,STM32通过串口1打印在串口助手,用于测试命令与接收端信息处理的准确性.
+
+注意: ReadDeviceID发送给scanner,scanner回应的是以英文句点'.'作为结束.
+其它识别码的数据都是以回车符CR作为结束
