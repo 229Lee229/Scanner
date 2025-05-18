@@ -93,6 +93,10 @@ void Usart1_Init(u32 bound){
 	
 	/* USART1 Init */
 	USART_InitTypeDef USART_InitStructre;
+		// IS_USART_LASTBIT(USART_LastBit_Disable);
+	// USART1->CR2 |= USART_CR2_MSBFIRST; 
+
+
 	USART_InitStructre.USART_BaudRate = bound;
 	USART_InitStructre.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_InitStructre.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;	/* Sending and Receiving mode */

@@ -30,4 +30,6 @@
 #include "Debug_cmd.h"
 #include "key.h"
 #include "LED_State.h"
+#include "HeartBeat.h"
+#include "boot-flash.h"
 #endif

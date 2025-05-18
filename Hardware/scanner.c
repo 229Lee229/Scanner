@@ -16,7 +16,7 @@ bool data_REC_ch340_Flag;
 extern char *AT_CONTINUOUS_Str;
 extern char *AT_MANUAL_Str;
 extern char *AT_ReadDeviceID_Str;
-
+char *Bootloader_Str = "BOOT\r";
 volatile uint8_t Manual_Cmd[] = {0x7E,0x00,0x08,0x01,0x00,0x00,0xD4,0xAB,0xCD};
 volatile uint8_t Continuous_Cmd[] = {0x7E,0x00,0x08,0x01,0x00,0x00,0xD6,0xAB,0xCD};
 volatile uint8_t Single_time_25s_Cmd[] = {0x7E,0x00,0x08,0x01,0x00,0x06,0xFE,0xAB,0xCD};
@@ -155,6 +155,31 @@ void Handle_RX_Scanner(void){   		// 处理接收到的scanner数据,并将数据传给usart1
 	
 			if(Scan_Data_Flag == true){
 				char Scan_Data[1048];
+				
+				if(MANUAL_FLAG == false){				
+					// 如果处在连续扫描模式,扫到新数据则重置5min定时器			
+									// ????????????
+//				TIM1->CNT = 0;          // 重置计数器
+//				TIM1->EGR |= TIM_EGR_UG; // 重置重复计数器																																																										
+
+
+
+					// ??????
+					TIM1->DIER &= ~TIM_DIER_UIE;
+
+					// ??????
+					TIM1->CNT = 0;
+
+					// ??????
+					TIM1->EGR |= TIM_EGR_UG;
+
+					// ??????
+					TIM1->SR &= ~TIM_SR_UIF;
+
+					// ????????
+					TIM1->DIER |= TIM_DIER_UIE;					
+				}
+				
 				sprintf(Scan_Data,"A:%s",(char *)Rx_scanner_temp);// CODE_DATA:
 				Delay_us(1);
 				printf("%s",(char *)Scan_Data);
@@ -187,11 +212,28 @@ void Handle_RX_Scanner(void){   		// 处理接收到的scanner数据,并将数据传给usart1
 	
 }
 
+extern volatile bool sleep_flag;
 void Handle_RX_CH340(void){
 	// AT_CONTINUOUS 核对是否正确
 	if(strcmp(Rx_ch340_temp,AT_CONTINUOUS_Str) == 0){			// AT_CONTINUOUS如果核对正确,则发送指令
 		// 发送指令
 		Send_Continuous_Cmd();
+		sleep_flag = false;
+		TIM1->DIER &= ~TIM_DIER_UIE;
+
+		// ??????
+		TIM1->CNT = 0;
+
+		// ??????
+		TIM1->EGR |= TIM_EGR_UG;
+
+		// ??????
+		TIM1->SR &= ~TIM_SR_UIF;
+
+		// ????????
+		TIM1->DIER |= TIM_DIER_UIE;	
+		TIM_Cmd(TIM1, ENABLE);			// 开始计时5min, 当扫到新数据重装
+		
 		MANUAL_FLAG = false;				// 当收到连续模式的指令后, 手动模式即失能, 按键恢复发送NG指令
 #ifdef	DEBUG_PRINT
 		printf("CONTINUOUS_MATCH!\r\n");
@@ -231,6 +273,24 @@ void Handle_RX_CH340(void){
 		// 发送指令
 		// Send_Manual_Cmd();
 		Send_Cmd_trig_Cmd();
+		
+		// 切换手动模式时,把TIM1关闭
+		TIM1->DIER &= ~TIM_DIER_UIE;
+
+		// ??????
+		TIM1->CNT = 0;
+
+		// ??????
+		TIM1->EGR |= TIM_EGR_UG;
+
+		// ??????
+		TIM1->SR &= ~TIM_SR_UIF;
+
+		// ????????
+		TIM1->DIER |= TIM_DIER_UIE;			
+
+		TIM_Cmd(TIM1,DISABLE);
+		//-----------------------------------------
 		for(int i  = 0; i <= 5555;i++){
 			;
 		}
@@ -277,6 +337,15 @@ void Handle_RX_CH340(void){
 		Delay_ms(100);
 
 	}
+	// 进入bootloader模式
+	else if(strcmp(Rx_ch340_temp,Bootloader_Str) == 0){
+		// 1.写2C00标志位地
+		Write_App_Version();
+		// 写完重启
+		NVIC_SystemReset();
+	}
+	
+	
 	else{	
 		uint8_t frame[5];
 		frame[0] = 0xAA;
@@ -311,12 +380,6 @@ extern bool key1;
 void USART1_IRQHandler(void){
 	if(USART_GetITStatus(CH340_UART1,USART_IT_RXNE) != RESET){
 		uint8_t Rx_temp = USART_ReceiveData(CH340_UART1);
-		
-		
-		
-
-		
-		
 		if(ch340_rx_index >= sizeof(rx_buffer_ch340)){
             ch340_rx_index = 0; //防止串口被刷爆			
 		}

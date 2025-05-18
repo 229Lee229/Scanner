@@ -80,9 +80,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name></UserProg1Name>
+            <UserProg1Name>fromelf --bin -o "$L@L.bin" "#L"</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -273,7 +273,7 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
+                <StartAddress>0x8003000</StartAddress>
                 <Size>0x10000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
@@ -709,6 +709,26 @@
               <FileName>usart.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\System\usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>HeartBeat.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\HeartBeat.c</FilePath>
+            </File>
+            <File>
+              <FileName>HeartBeat.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\HeartBeat.h</FilePath>
+            </File>
+            <File>
+              <FileName>boot-flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\boot-flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>boot-flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\boot-flash.h</FilePath>
             </File>
           </Files>
         </Group>
