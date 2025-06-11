@@ -318,7 +318,7 @@ void Handle_RX_CH340(void){
 		}
 //		PBout(9) = 0;
 //		PAout(15) = 1;
-				Delay_ms(100);
+			Delay_ms(100);
 			memset(rx_buffer_scanner, 0, sizeof(rx_buffer_scanner));	
 			memset(Rx_scanner_temp, 0, sizeof(Rx_scanner_temp));	
 			scanner_rx_index = 0;

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\STM32F103_Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\STM32F103_Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri May 16 21:20:27 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Jun 10 22:19:30 2025
 <BR><P>
 <H3>Maximum Stack Usage =       1096 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -572,11 +572,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[23]"></a>TIM1_UP_IRQHandler</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, key.o(i.TIM1_UP_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIM1_UP_IRQHandler &rArr; __2printf
+<P><STRONG><a name="[23]"></a>TIM1_UP_IRQHandler</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, key.o(i.TIM1_UP_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = TIM1_UP_IRQHandler &rArr; TIM_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_Cmd_trig_Cmd
+<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_Cmd_trig_Cmd
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
@@ -834,8 +833,7 @@ Global Symbols
 <P><STRONG><a name="[56]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf2.o(i.__0printf$2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Handle_RX_Scanner
+<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Handle_RX_Scanner
 </UL>
 
 <P><STRONG><a name="[79]"></a>__0sprintf$2</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printf2.o(i.__0sprintf$2), UNUSED)

@@ -160,7 +160,7 @@ void TIM1_UP_IRQHandler(void) {
 //		}
 //		 EXTI->IMR |= EXTI_Line3;    // ????????
 
-		printf("TIM1 test\r\n");
+		// printf("TIM1 test\r\n");
     }
 }
 void TIM2_IRQHandler(void){
