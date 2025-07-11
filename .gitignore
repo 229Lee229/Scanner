@@ -2,3 +2,7 @@ echo "/Objects/" >> .gitignore
 
 # 忽略所有 MDK-ARM 下的 EVAL 目录
 Bootloader/PRJ/STM32F10x_AN2557_FW_V3.3.0/Project/IAP/MDK-ARM/*EVAL*/
+
+# 忽略所有 .htm 和 .html 文件
+**/*.htm
+**/*.html
