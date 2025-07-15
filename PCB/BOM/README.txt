@@ -1,0 +1,1 @@
+V2版本支持Geehy芯片, 与V1版本不同的是在BOOT0引脚上拉低, 避免开机进入bootloader

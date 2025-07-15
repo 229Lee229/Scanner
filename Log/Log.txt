@@ -1,0 +1,2 @@
+Software ver			| 		Hardware ver
+  2.1  (boot v1)					2.0						初步部署, 试运行正常			25/7/15
