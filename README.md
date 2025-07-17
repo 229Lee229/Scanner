@@ -42,7 +42,7 @@
 +   摄像头常用命令
 
     +   读码时长
-    +   ![](Picture_temp/读码时长.png)
+    +   ![](Scanner_Manual/Picture_temp/读码时长.png)
 
 +   **1、USB转串口CH340驱动**
 
@@ -67,7 +67,7 @@
 
     +   当扫码器扫码成功后，会向主机发送码对应的数据，如（大致的每个码的数据像一下这样，这里的每行都是一个码的数据）：
     +   以前缀"A:"开头, 以回车符'\r'结束
-    +   ![](Picture_temp/com_data_stream.png)
+    +   ![](Scanner_Manual/Picture_temp/com_data_stream.png)
 
 +   **4、切换模式**
 
