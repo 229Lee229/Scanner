@@ -4,6 +4,8 @@
 /Program-MDK/Objects/
 /Program-MDK/Bootloader/PRJ/STM32F10x_AN2557_FW_V3.3.0/Project/IAP/MDK-ARM/*EVAL*/
 /Program-MDK/Bootloader/PRJ/STM32F10x_AN2557_FW_V3.3.0/Utilities/STM32_EVAL/*EVAL*/
+/Program-MDK/Bootloader/PRJ/STM32F10x_AN2557_FW_V3.3.0/_htmresc/
+
 # 忽略所有 .htm 和 .html 文件
 **/*.htm
 **/*.html
