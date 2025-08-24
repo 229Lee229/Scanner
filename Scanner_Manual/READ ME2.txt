@@ -13,4 +13,4 @@ TIM4	心跳	 2s
 
 OBJ中的Scanner_V4.1.hex文件是第一个版本,测试基本可行,后续版本考虑去掉消抖定时器改为for延时 
 
-20250512 Lee	mikasa229@gmail.com
+20250512 Lee	mikasa229l@gmail.com
