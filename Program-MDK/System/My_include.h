@@ -15,6 +15,8 @@
 #define  uchar unsigned char
 #include "stm32f10x.h"                  // Device header
 
+// #define NDEBUG 
+#include "assert.h"
 
 #include "OLED.h"
 #include "Delay.h"

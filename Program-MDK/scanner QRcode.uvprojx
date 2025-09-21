@@ -334,7 +334,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER</Define>
+              <Define>USE_STDPERIPH_DRIVER,NDEBUG</Define>
               <Undefine></Undefine>
               <IncludePath>.\User;.\Start;.\Library;.\System;.\Hardware</IncludePath>
             </VariousControls>

@@ -47,7 +47,16 @@ extern volatile int blink_cnt;
 
 
 volatile bool  sleep_flag = false;
-
+// ??ARM EABI???????
+void __aeabi_assert(const char *expr, const char *file, int line) {
+  // ????????????(????????)
+  char msg[128];
+  sprintf(msg, "Assert failed: %s, file %s, line %d\r\n", expr, file, line);
+  printf("%s",(uint8_t*)msg);
+  
+  // ???????,????????
+  while(1);
+}
 int main(void){
 	/* 4/4 新增 */
 //	RCC_DeInit();		// 复位时钟配置
@@ -81,6 +90,10 @@ int main(void){
 	key_Init();
 	LED_State_Init();
 	STATUS_LED_GREEN_ON();			// 状态灯 低电平点亮
+	
+	// 加调试
+	assert(PAout(15) == 1);
+	
 	// Send_Single_Cmd(15);
 	// Send_ReadDeviceID_Cmd();
 	Send_Cmd_trig_Cmd();
