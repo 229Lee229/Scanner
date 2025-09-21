@@ -13,3 +13,6 @@
 
 **/Listings/
 **/*.LEE
+**/*.uvoptx
+**/*.scvd
+**/DebugConfig/
